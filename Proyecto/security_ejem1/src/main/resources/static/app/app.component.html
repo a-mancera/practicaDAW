@@ -6,7 +6,8 @@
 			<li><a href="#">Busqueda de eventos</a></li>
 			<li><a href="#">Busqueda de patrocinadores</a></li>
 			<li><a href="#">Busqueda de organizadores</a></li>
-			<li *ngIf="loginService.isLogged"><a href="#">Condicional</a></li>
+			<li *ngIf="loginService.isLogged"><a [routerLink]="['Mensajes']">Mensajes</a></li>
+			<li *ngIf="loginService.isLogged"><a [routerLink]="['Propuestas']">Propuestas de evento</a></li>
 			<li class="ts-account">
 				<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>

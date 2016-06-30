@@ -16,6 +16,7 @@ export interface User {
     facebook:string;
     instagram:string;
     youtube:string;
+    mensajes:string[];
 }
 
 export interface TipoEvento {

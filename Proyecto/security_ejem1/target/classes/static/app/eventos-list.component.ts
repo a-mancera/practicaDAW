@@ -15,10 +15,9 @@ import {LoginService}   from './login.service';
     	<li>Resumen:{{evento.resumen}}</li>
     	<li>Direccion:{{evento.direccion}}</li>
     	<li>Tipo evento:{{evento.tipo}}</li>
-    	</ul>    
-      <hr color="blue" size=3>
+    	</ul>          
       </li>
-      
+      <hr color="blue" size=3>
     </ul>
     
   `
