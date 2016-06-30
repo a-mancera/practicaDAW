@@ -44,6 +44,7 @@ public class Evento {
 	
 	private String hora;
 	
+	private String foto;
 	//@OneToMany(cascade=CascadeType.ALL)
 	//private List<Reseña> reseñas = new ArrayList<>();
 	
@@ -60,6 +61,7 @@ public class Evento {
 		this.tipo = tipo;
 		this.fecha = fecha;
 		this.hora = hora;
+		this.foto = "defecto";
 	}
 	
 	/*public Evento(String nombre, String resumen, String descripcion,String direccion, String patrocinador, 
@@ -114,6 +116,10 @@ public class Evento {
 	
 	public String getHora(){
 		return this.hora;
+	}
+	
+	public String getFoto(){
+		return this.foto;
 	}
 	
 	/*public List<Reseña> getReseñas(){

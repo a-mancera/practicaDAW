@@ -5,7 +5,7 @@
 		<ul class="ts-profile-nav">
 			<li><a href="#">Busqueda de eventos</a></li>
 			<li><a href="#">Busqueda de patrocinadores</a></li>
-			<li><a href="#">Busqueda de organizadores</a></li>
+			<li><a [routerLink]="['Prueba']">Busqueda de organizadores</a></li>
 			<li *ngIf="loginService.isLogged"><a [routerLink]="['Mensajes']">Mensajes</a></li>
 			<li *ngIf="loginService.isLogged"><a [routerLink]="['Propuestas']">Propuestas de evento</a></li>
 			<li class="ts-account">

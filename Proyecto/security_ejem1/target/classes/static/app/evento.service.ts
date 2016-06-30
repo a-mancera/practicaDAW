@@ -14,6 +14,7 @@ export interface Evento {
 	tipo:string;
 	fecha:string;
 	hora:string;
+	foto:string;
 }
 
 const URL = 'eventos/';

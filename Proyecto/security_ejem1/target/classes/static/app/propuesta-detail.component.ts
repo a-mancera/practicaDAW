@@ -4,6 +4,10 @@ import {Propuesta,PropuestaService}   from './propuesta.service';
 import {Evento, EventoService}   from './evento.service';
 import {LoginService}   from './login.service';
 
+import {HTTP_PROVIDERS, Http} from 'angular2/http';
+import {MultipartItem} from "./multipart-upload/multipart-item";
+import {MultipartUploader} from "./multipart-upload/multipart-uploader";
+
 @Component({
 	directives: [ROUTER_DIRECTIVES],
     template: `
@@ -24,7 +28,7 @@ import {LoginService}   from './login.service';
 	<div *ngIf="crearEvento">
 		<label>Código del evento:</label>
 		<input [(ngModel)]="cod" placeholder="Nombre del evento"/><br>
-		
+		<label for="exampleInputFile">File input</label> <input type="file" (change)="selectFile($event)">				
 		<button (click)="crear()">Confirmar</button>
 	</div>
 	<p *ngIf="correcto">{{hola}} {{evento.nombre}}</p>
@@ -37,10 +41,15 @@ export class PropuestaDetailComponent implements OnInit {
 	cod:number;
 	correcto:true;
 	evento:Evento;
+    
+    private file: File;
+	mensaje = 'hola';
+	private images: String[] = [];
+    foto = false;
     constructor(private router:Router, 
     routeParams: RouteParams,
     private service:PropuestaService,private lService:LoginService,
-    private evService:EventoService) {
+    private evService:EventoService,private http: Http) {
     	 let id = routeParams.get('id');
     	 this.propuesta = { nombre:''};
     	 service.getPropuesta(id).subscribe(
@@ -67,6 +76,12 @@ export class PropuestaDetailComponent implements OnInit {
 			this.evento.tipo = this.propuesta.tipo;
 			this.evento.fecha = this.propuesta.fecha;
 			this.evento.hora = this.propuesta.hora;
+			if (this.foto){
+				this.evento.foto = 'evento'+this.propuesta.id);
+				this.upload();
+			}else{
+				this.evento.foto = 'defecto');
+			}
 			this.service.eliminar(this.propuesta).subscribe(
 	            _ => {},
 	            error => this.hola = error
@@ -79,6 +94,42 @@ export class PropuestaDetailComponent implements OnInit {
 		}else{
 			this.hola = 'Codigo erroneo';
 		}
+	}
+	
+	selectFile($event) {		
+		this.file = $event.target.files[0];
+		this.foto = true;
+		console.debug("Selected file: " + this.file.name + " type:" + this.file.size + " size:" + this.file.size);		
+	}
+	
+	upload() {
+		
+		console.debug("Uploading file...");
+
+		if (this.file == null){
+			console.error("You have to select a file and set a description.");
+			return;
+		}		
+		
+		let formData = new FormData();
+		formData.append("nombre", 'evento'+this.propuesta.id);			
+		formData.append("file",  this.file);
+
+		let multipartItem = new MultipartItem(new MultipartUploader({url: '/image/upload'}));
+		
+		multipartItem.formData = formData;
+		
+		multipartItem.callback = (data, status, headers) => {
+						
+			if (status == 200){				
+				console.debug("File has been uploaded");
+								
+			} else {
+				console.error("Error uploading file");
+			}
+		};
+		
+		multipartItem.upload();
 	}
 	
 }

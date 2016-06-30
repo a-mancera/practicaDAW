@@ -23,6 +23,8 @@ import {ComentarioService} from './comentario.service';
 import {PropuestaService} from './propuesta.service';
 import {MensajeService} from './mensaje.service';
 
+import {Prueba} from './prueba';
+
 import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
@@ -42,7 +44,8 @@ import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
   {path: '/propuestas', name: 'Propuestas', component: PropuestasListComponent},
   {path: '/propuestas/nueva', name: 'NuevaPropuesta', component: PropuestaFormComponent},
   {path: '/propuestas/detalle/:id', name: 'DetallePropuesta', component: PropuestaDetailComponent},
-  {path: '/mensajes/detalle/:id', name: 'DetalleMensaje', component: MensajeDetailComponent}
+  {path: '/mensajes/detalle/:id', name: 'DetalleMensaje', component: MensajeDetailComponent},
+  {path: '/prueba', name: 'Prueba', component: Prueba}
 ])
 export class AppComponent {	
 	constructor(private loginService: LoginService, private router:Router){}

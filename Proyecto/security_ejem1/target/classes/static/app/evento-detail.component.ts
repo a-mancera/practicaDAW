@@ -8,6 +8,7 @@ import {LoginService}   from './login.service';
 	directives: [ROUTER_DIRECTIVES],
     template: `
   	<h1>Detalle Evento</h1>
+  	<img src="/carteles/{{evento.foto}}.jpg" /><br>
   	<label>Nombre: {{evento.nombre}}</label><br>
   	<label>Resumen: {{evento.resumen}}</label><br>
   	<label>Descripcion: {{evento.descripcion}}</label><br>
