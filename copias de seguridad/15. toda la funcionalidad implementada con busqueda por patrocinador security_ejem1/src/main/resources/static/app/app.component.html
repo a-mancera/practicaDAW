@@ -1,0 +1,33 @@
+<!-- Navigation -->
+ <div class="brand clearfix">
+		<a href="index.html" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
+		<span class="menu-btn"><i class="fa fa-bars"></i></span>
+		<ul class="ts-profile-nav">
+			<li><a [routerLink]="['Filtro']">Busqueda de eventos</a></li>
+			<li><a [routerLink]="['Organizadores']">Busqueda de organizadores</a></li>	
+			<li><a [routerLink]="['Patrocinadores']">Busqueda de patrocinadores</a></li>				
+			<li *ngIf="loginService.isLogged"><a [routerLink]="['Mensajes']">Mensajes</a></li>
+			<li *ngIf="loginService.isLogged"><a [routerLink]="['Propuestas']">Propuestas de evento</a></li>
+			
+		</ul>
+	</div>
+	
+	<div class="ts-main-content">
+		<nav class="ts-sidebar">
+			<ul class="ts-sidebar-menu">
+				<li><login></login></li>
+				<li *ngIf="!loginService.isLogged"><br>
+				<button type="submit" (click)="nuevoUsuario()" class="btn btn-default">Crear cuenta de usuario</button> 
+				</li>
+			</ul>
+		</nav>
+		<div class="content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<router-outlet></router-outlet>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</div>
