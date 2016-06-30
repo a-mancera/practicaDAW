@@ -20,7 +20,8 @@ export interface Filtro {
 		<input type="checkbox" [(ngModel)]="item.checked"/> {{item.tipo}}
 		</span>
 	<br>
-    <button (click)="realizarFiltro()">Buscar</button>
+    <button (click)="realizarFiltro()">Buscar</button>    
+    <button (click)="volver()">Volver</button>
     
     
     <div *ngIf="mostrar">
@@ -99,10 +100,7 @@ export class EventoFiltroComponent implements OnInit {
 		this.mostrar = true;
 	}
 	
-	filtroPorTipo(){
-		for (let i of this.tiposEvento){
-    		if (i.checked){
-    			this.usuario.tiposEventos.push(i.tipo);
-    	}
+	volver(){
+		this.router.navigate(['Eventos']);
 	}
 }

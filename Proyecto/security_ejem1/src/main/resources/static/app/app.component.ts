@@ -15,6 +15,8 @@ import {PropuestaFormComponent} from './propuesta.form';
 import {PropuestaDetailComponent} from './propuesta-detail.component';
 import {MensajeDetailComponent} from './mensaje-detail.component';
 import {EventoFiltroComponent} from './evento-list-filtro.component';
+import {OrganizadoresListComponent} from './organizadores-list.component';
+import {OrganizadorDetailComponent} from './organizador-detail.component';
 
 import {BookService} from './book.service';
 import {LoginService} from './login.service';
@@ -46,7 +48,9 @@ import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
   {path: '/propuestas/nueva', name: 'NuevaPropuesta', component: PropuestaFormComponent},
   {path: '/propuestas/detalle/:id', name: 'DetallePropuesta', component: PropuestaDetailComponent},
   {path: '/mensajes/detalle/:id', name: 'DetalleMensaje', component: MensajeDetailComponent},
-  {path: '/filtro', name: 'Filtro', component: EventoFiltroComponent}
+  {path: '/filtro', name: 'Filtro', component: EventoFiltroComponent},
+  {path: '/organizadores', name: 'Organizadores', component: OrganizadoresListComponent},
+  {path: '/organizadores/detalle/:id', name: 'OrganizadorDetalle', component: OrganizadorDetailComponent}  
 ])
 export class AppComponent {	
 	constructor(private loginService: LoginService, private router:Router){}

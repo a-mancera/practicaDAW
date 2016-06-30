@@ -106,6 +106,10 @@ public class User {
 		this.mensajes = new ArrayList<>();
 	}
 
+	public long getId(){
+		return this.id;
+	}
+	
 	public String getName() {
 		return name;
 	}

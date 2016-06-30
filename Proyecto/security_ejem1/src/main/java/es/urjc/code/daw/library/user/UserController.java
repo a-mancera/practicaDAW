@@ -28,12 +28,12 @@ public class UserController {
 	private UserRepository repository;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public Collection<User> getBooks() {
+	public Collection<User> getUsuarios() {
 		return repository.findAll();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<User> getAnuncio(@PathVariable long id) {
+	public ResponseEntity<User> getUsuario(@PathVariable long id) {
 		
 		
 

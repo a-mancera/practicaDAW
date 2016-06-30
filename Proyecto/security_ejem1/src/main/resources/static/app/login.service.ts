@@ -104,7 +104,17 @@ export class LoginService {
 		);		
 	}
 	
+	getUsuarios(){
+		return this.http.get(URL)
+	      .map(response => response.json())
+	      .catch(error => this.handleError(error));
+	}
 	
+	getUsuario(id:number){
+		return this.http.get(URL+id)
+	      .map(response => response.json())
+	      .catch(error => this.handleError(error));
+	}
 	
 	logOut(){
 		
