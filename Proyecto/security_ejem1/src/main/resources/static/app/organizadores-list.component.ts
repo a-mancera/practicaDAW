@@ -7,15 +7,33 @@ import {LoginService, User}   from './login.service';
 @Component({
     directives: [ROUTER_DIRECTIVES],
     template: `
-    <h2>Organizadores:</h2>
-    <ul *ngFor="#u of usuarios">
-      <li *ngIf="!u.patrocinador">
-      <a [routerLink]="['OrganizadorDetalle', {id:u.name}]">Nombre de usuario: {{u.name}}</a>
-      </li>    	
-    	<li *ngIf="!u.patrocinador">Nombre:{{u.nombre}}</li>
-    	<li *ngIf="!u.patrocinador">Descripcion:{{u.descripcion}}</li>     	   	                  
-    </ul>
-    <button (click)="volver()">Volver</button>
+    
+    <h1>Organizadores:</h1>
+    <hr />
+    <div *ngFor="#u of usuarios">
+    <div *ngIf="!u.patrocinador">
+    <div class="col-md-4 col-sm-4">
+    	
+     	<div class="panel panel-default">
+         <div class="panel-heading">
+         	<b><a [routerLink]="['OrganizadorDetalle', {id:u.name}]">Nombre de usuario: {{u.name}}</a></b>
+         </div>
+         <div class="panel-body">
+          <ul>
+	    	<li *ngIf="!u.patrocinador">Nombre:{{u.nombre}}</li>
+    		<li *ngIf="!u.patrocinador">Descripcion:{{u.descripcion}}</li> 
+    	</ul>
+    	
+         </div>
+        
+         </div>
+         </div>
+         </div>
+         
+    	</div> 
+ <div class="col-md-12 col-sm-4">
+ <button (click)="volver()">Volver</button>
+ </div>
   `
 })
 export class OrganizadoresListComponent implements OnInit {

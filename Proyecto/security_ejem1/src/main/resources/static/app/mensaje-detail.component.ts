@@ -7,19 +7,40 @@ import {LoginService}   from './login.service';
 @Component({
 	directives: [ROUTER_DIRECTIVES],
     template: `
-  	<h1>Mensaje: </h1>
-  	<label>De: {{mensaje.emisor}}</label> <br> 	
-  	<label>Fecha: {{mensaje.fecha}}</label> <br>
-  	<label>Asunto: {{mensaje.asunto}}</label> <br>
-  	<label>Mensaje: {{mensaje.mensaje}}</label> <br> 	 	 		
-	<button (click)="volver()">Volver</button><br><br>
-	<h4>Responder mensaje: </h4>
-	<label>Asunto: </label>
-	<input [(ngModel)]="respuesta.asunto" placeholder="Asunto"/><br>
-	<label>Mensaje:</label><br>
-	<textarea [(ngModel)]="respuesta.mensaje" placeholder="Descripcion" rows="8" cols="50"></textarea><br>
-	<button (click)="comentarioNuevo()">Responder</button>
-	<p>emisor {{respuesta.emisor}}, remitente {{respuesta.remitente}}</p>	
+    
+    <h1>Detalles del mensaje</h1>  	
+	<hr />
+					<div class="col-md-1 col-sm-12 col-xs-12" ></div>
+	                <div class="col-md-8 col-sm-12 col-xs-12" >                     
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           De: {{mensaje.emisor}}
+                        </div>
+                        <div class="panel-body">
+                            <label>Asunto: {{mensaje.asunto}}</label> <br>
+  							<label>Mensaje: {{mensaje.mensaje}}</label> <br> 
+							<button (click)="volver()">Volver</button><br><br>														 							               
+	</div><br><hr/>
+	
+	                <div class="col-md-12 col-sm-12 col-xs-12" >                     
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Responder mensaje:
+                        </div>
+                        <div class="panel-body">
+                            <label>Asunto: </label>
+								<input [(ngModel)]="respuesta.asunto" placeholder="Asunto"/><br>
+								<label>Mensaje:</label><br>
+								<textarea [(ngModel)]="respuesta.mensaje" placeholder="Descripcion" rows="8" cols="50"></textarea><br>
+								<button (click)="comentarioNuevo()">Responder</button>
+                        </div>
+                    </div> 
+               
+					</div>
+							 							 							 														
+							 </div>
+							 
+                        </div>
   	`
 })
 export class MensajeDetailComponent implements OnInit {

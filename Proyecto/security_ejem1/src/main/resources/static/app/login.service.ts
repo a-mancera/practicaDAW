@@ -1,14 +1,15 @@
 import { Injectable, OnInit } from 'angular2/core';
 import { Http, RequestOptions, Headers } from 'angular2/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 export interface User {  
     id?: number;
     name: string;
     pass: string;
-    roles: string[];
-    nombre:string;
+    roles: string[];    
     patrocinador:boolean;
+    nombre:string;
     descripcion:string;
     web:string;
     tiposEventos: Array<string>;
@@ -16,7 +17,6 @@ export interface User {
     facebook:string;
     instagram:string;
     youtube:string;
-    mensajes:string[];
 }
 
 export interface TipoEvento {
@@ -115,6 +115,11 @@ export class LoginService {
 	      .map(response => response.json())
 	      .catch(error => this.handleError(error));
 	}
+	
+	 private handleError(error: any){
+      console.error(error);
+      return Observable.throw("Server error (" + error.status + "): " + error.text())
+    }
 	
 	logOut(){
 		

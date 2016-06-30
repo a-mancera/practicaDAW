@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import es.urjc.code.daw.library.reseña.Comentario;
+import es.urjc.code.daw.library.comentarios.Comentario;
 import es.urjc.code.daw.library.user.User;
 import es.urjc.code.daw.library.user.UserRepository;
 

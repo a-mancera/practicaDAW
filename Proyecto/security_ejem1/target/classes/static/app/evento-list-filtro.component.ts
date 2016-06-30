@@ -12,32 +12,51 @@ export interface Filtro {
 @Component({
     directives: [ROUTER_DIRECTIVES],
     template: `
-    <h2>Filtro</h2>
-    <label>Ciudad: </label>
-    <input [(ngModel)]="filtro.ciudad" placeholder="Nombre de usuario"/><br>
-    <label>Tipos de evento:</label>	
-     <span *ngFor="#item of tiposEvento">
-		<input type="checkbox" [(ngModel)]="item.checked"/> {{item.tipo}}
-		</span>
-	<br>
-    <button (click)="realizarFiltro()">Buscar</button>    
-    <button (click)="volver()">Volver</button>
-    
-    
+        
+    <div class="col-md-10 col-sm-12 col-xs-12">
+                         <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Filtro: 
+                        </div>
+                        <div class="panel-body">
+                            <label>Ciudad: </label>
+						    <input [(ngModel)]="filtro.ciudad" placeholder="Nombre de usuario"/><br>
+						    <label>Tipos de evento:</label>	
+						     <span *ngFor="#item of tiposEvento">
+								<input type="checkbox" [(ngModel)]="item.checked"/> {{item.tipo}}
+								</span>
+							<br>
+						    <button (click)="realizarFiltro()">Buscar</button>    
+						    <button (click)="volver()">Volver</button>
+                        </div>
+                    </div>
+                    
     <div *ngIf="mostrar">
-    <ul>
-      <li *ngFor="#evento of eventosFiltrados">
-    	<a [routerLink]="['EventoDetallado', {id:evento.id}]">Nombre: {{evento.nombre}}</a>
-    	<ul>
-    	<li>Resumen:{{evento.resumen}}</li>
-    	<li>Direccion:{{evento.direccion}}, {{evento.ciudad}}</li>
-    	<li>Tipo evento:{{evento.tipo}}</li>
-    	</ul>          
-      </li>
-      <hr color="blue" size=3>
-    </ul>
-    <p *ngIf="!resultados">Sin resultados</p>
+    <div *ngFor="#evento of eventosFiltrados">
+    <div class="col-md-4 col-sm-4">
+    	
+     	<div class="panel panel-default">
+         <div class="panel-heading">
+         	<b><a [routerLink]="['EventoDetallado', {id:evento.id}]">Nombre: {{evento.nombre}}</a></b>
+         </div>
+         <div class="panel-body">
+          <ul>
+	    	<li>Resumen:{{evento.resumen}}</li>
+    		<li>Direccion:{{evento.direccion}}, {{evento.ciudad}}</li>
+    		
+    	</ul>
+         </div>
+         <div class="panel-footer">
+         Tipo evento:{{evento.tipo}} 
+         </div>
+         </div>
+         
+         </div>  
+                
+    	</div> 
+    	<p *ngIf="!resultados">Sin resultados</p>
     </div>
+    
   `
 })
 export class EventoFiltroComponent implements OnInit {

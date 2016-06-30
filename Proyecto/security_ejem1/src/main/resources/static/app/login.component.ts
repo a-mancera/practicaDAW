@@ -28,4 +28,8 @@ export class LoginComponent {
 	this.router.navigate(['Eventos']);
   }
   
+  nuevoUsuario(){
+		this.router.navigate(['UsuarioNuevo']);
+	}
+  
 }

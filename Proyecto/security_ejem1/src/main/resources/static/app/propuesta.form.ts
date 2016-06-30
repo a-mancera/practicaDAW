@@ -5,8 +5,15 @@ import {PropuestaService, Propuesta} from './propuesta.service';
 
 @Component({
   template: `
-  <div><h2>Nueva propuesta</h2></div>  
-  <label>Nombre del evento: </label>
+  <h1>Nueva propuesta</h1>
+  <div class="col-md-2 col-sm-12 col-xs-12"> </div> 
+	<div class="col-md-8 col-sm-12 col-xs-12">                     
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Nueva propuesta
+                        </div>
+                        <div class="panel-body">
+                            <label>Nombre del evento: </label>
     <input [(ngModel)]="propuesta.nombre" placeholder="Nombre del evento"/><br>
     <label>Resumen: </label>
     <textarea [(ngModel)]="propuesta.resumen" placeholder="Resumen" rows="3" cols="50"></textarea><br>
@@ -26,10 +33,15 @@ import {PropuestaService, Propuesta} from './propuesta.service';
     <input [(ngModel)]="propuesta.hora" placeholder="Hora"/><br>
 	<label>Estimacion coste patrocinio: </label>
     <input [(ngModel)]="propuesta.estimacionPatrocinio" placeholder="Estimacion coste"/><br>
-	<p>{{hola}}</p>
 	
   <button (click)="crear()">Crear propuesta</button>
   <button (click)="volver()">Volver</button>
+                        </div>
+                    </div>    
+    
+  </div>
+  
+  
    `
 })
 export class PropuestaFormComponent {

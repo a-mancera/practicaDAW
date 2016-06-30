@@ -12,41 +12,62 @@ import {MultipartUploader} from "./multipart-upload/multipart-uploader";
 @Component({
 	directives: [ROUTER_DIRECTIVES],
     template: `
-  	<h1>Detalle Evento</h1>
-  	<label>Nombre: {{propuesta.nombre}}</label><br>
-  	<label>Resumen: {{propuesta.resumen}}</label><br>
-  	<label>Descripcion: {{propuesta.descripcion}}</label><br>
-  	<label>Organizador: {{propuesta.organizador}}</label><br>
-	<label>Fecha: {{propuesta.fecha}}</label><br>
-	<label>Hora: {{propuesta.hora}}</label><br>
-	<label>Direccion: {{propuesta.direccion}}, {{propuesta.ciudad}}</label><br>
-	<label>Tipo evento: {{propuesta.tipo}}</label><br>
-	<label>Coste estimado: {{propuesta.estimacionPatrocinio}}</label><br>
-	 <button (click)="contactarForm()">Contactar con organizador</button>
-	 
-	 <div *ngIf="contactar">
-	 <label>Asunto: </label>
-	<input [(ngModel)]="nuevoMensaje.asunto" placeholder="Asunto"/><br>
-	<label>Mensaje:</label><br>
-	<textarea [(ngModel)]="nuevoMensaje.mensaje" placeholder="Descripcion" rows="8" cols="50"></textarea><br>
-	<button (click)="enviarMensaje()">Enviar</button>
-	
-	 </div>
-	 
-	 <p>{{hola}}</p>
-	 
-	 <p *ngIf="mensajeEnviado">Mensaje enviado</p> 
-	 
-	    <button (click)="crearEvento=true">Crear evento</button>	   	    
-  	    <button (click)="volver()">Volver</button>
-  	 <hr>
-	<div *ngIf="crearEvento">
-		<label>Código del evento:</label>
-		<input [(ngModel)]="cod" placeholder="Nombre del evento"/><br>
-		<label for="exampleInputFile">Cargar cartel: </label> <input type="file" (change)="selectFile($event)">				
-		<button (click)="crear()">Confirmar</button>
+    <h1>Detalles del evento</h1>  	
+	<hr />
+					<div class="col-md-1 col-sm-12 col-xs-12" ></div>
+	                <div class="col-md-8 col-sm-12 col-xs-12" >                     
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Detalles:
+                        </div>
+                        <div class="panel-body">
+                            <label>Nombre: {{propuesta.nombre}}</label><br>
+						  	<label>Resumen: {{propuesta.resumen}}</label><br>
+						  	<label>Descripcion: {{propuesta.descripcion}}</label><br>
+						  	<label>Organizador: {{propuesta.organizador}}</label><br>
+							<label>Fecha: {{propuesta.fecha}}</label><br>
+							<label>Hora: {{propuesta.hora}}</label><br>
+							<label>Direccion: {{propuesta.direccion}}, {{propuesta.ciudad}}</label><br>
+							<label>Tipo evento: {{propuesta.tipo}}</label><br>
+							<label>Coste estimado: {{propuesta.estimacionPatrocinio}}</label><br>
+							 <button (click)="contactarForm()">Contactar con organizador</button><br>
+							 
+							 <div *ngIf="contactar">
+							 <div class="col-md-1 col-sm-12 col-xs-12" ></div>
+	                <div class="col-md-8 col-sm-12 col-xs-12" >                     
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Nuevo mensaje:
+                        </div>
+                        <div class="panel-body">
+                            <label>Asunto: </label>
+							<input [(ngModel)]="nuevoMensaje.asunto" placeholder="Asunto"/><br>
+							<label>Mensaje:</label><br>
+							<textarea [(ngModel)]="nuevoMensaje.mensaje" placeholder="Descripcion" rows="8" cols="40"></textarea><br>
+							<button (click)="enviarMensaje()">Enviar</button>
+                        </div>
+                    </div> 
+               
+					</div>
+							 							 							 														
+							 </div>
+							 <div class="col-md-12 col-sm-12 col-xs-12" >						 
+							 <p *ngIf="mensajeEnviado">Mensaje enviado</p> 
+							 
+							    <button (click)="crearEvento=true">Crear evento</button>	   	    
+						  	    <button (click)="volver()">Volver</button>
+						  	 <hr>
+							<div *ngIf="crearEvento">
+								<label>Código del evento:</label>
+								<input [(ngModel)]="cod" placeholder="Nombre del evento"/><br>
+								<label for="exampleInputFile">Cargar cartel: </label> <input type="file" (change)="selectFile($event)">				
+								<button (click)="crear()">Confirmar</button>
+							</div>
+							</div>
+                        </div>
+                    </div> 
+               
 	</div>
-	<p *ngIf="correcto">{{hola}} {{evento.nombre}}</p>
 	`
 })
 export class PropuestaDetailComponent implements OnInit {

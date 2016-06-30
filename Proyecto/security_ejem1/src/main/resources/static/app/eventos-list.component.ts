@@ -7,19 +7,28 @@ import {LoginService}   from './login.service';
 @Component({
     directives: [ROUTER_DIRECTIVES],
     template: `
-    <h2>Eventos</h2>
-    <ul>
-      <li *ngFor="#evento of eventos">
-    	<a [routerLink]="['EventoDetallado', {id:evento.id}]">Nombre: {{evento.nombre}}</a>
-    	<ul>
+    <h1>Eventos</h1>
+    <hr />
+    <div *ngFor="#evento of eventos">
+    <div class="col-md-4 col-sm-4">
+    	
+     	<div class="panel panel-default">
+         <div class="panel-heading">
+         	<b><a [routerLink]="['EventoDetallado', {id:evento.id}]">Nombre: {{evento.nombre}}</a></b>
+         </div>
+         <div class="panel-body">
+          <ul>
     	<li>Resumen:{{evento.resumen}}</li>
     	<li>Direccion:{{evento.direccion}},{{evento.ciudad}}</li>
     	<li>Tipo evento:{{evento.tipo}}</li>
-    	</ul>          
-      </li>
-      <hr color="blue" size=3>
-    </ul>
-    
+    	</ul>
+         </div>
+         <div class="panel-footer">
+         Fecha: {{evento.fecha}}
+         </div>
+         </div>
+         </div>
+    	</div>  
   `
 })
 export class EventoListComponent implements OnInit {

@@ -72,11 +72,8 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 	
-	private ArrayList<String> mensajes;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Evento> eventos = new ArrayList<>();
-	
+	//private ArrayList<String> mensajes;
+
 	public User() {
 	}
 
@@ -84,7 +81,7 @@ public class User {
 		this.name = name;
 		this.pass = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
-		this.mensajes = new ArrayList<>();
+		//this.mensajes = new ArrayList<>();
 	}
 	
 	public User(String name, String password, String nombre, String web,
@@ -103,7 +100,7 @@ public class User {
 		this.youtube = youtube;
 		this.descripcion = descripcion;
 		this.patrocinador = patrocinador;
-		this.mensajes = new ArrayList<>();
+		//this.mensajes = new ArrayList<>();
 	}
 
 	/*public long getId(){
@@ -166,10 +163,10 @@ public class User {
 		return this.youtube;
 	}
 	
-	public ArrayList<String> getMensajes(){
+	/*public ArrayList<String> getMensajes(){
 		this.mensajes.add("mensaje 1");
 		return this.mensajes;
-	}
+	}*/
 	
 	public ArrayList<String> getTiposEventos(){
 		return this.tiposEventos;
