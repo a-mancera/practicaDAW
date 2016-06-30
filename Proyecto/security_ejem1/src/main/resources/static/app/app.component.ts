@@ -13,6 +13,7 @@ import {MensajeComponent} from './mensajes.component'
 import {PropuestasListComponent} from './propuestas.list.component'
 import {PropuestaFormComponent} from './propuesta.form';
 import {PropuestaDetailComponent} from './propuesta-detail.component';
+import {MensajeDetailComponent} from './mensaje-detail.component';
 
 import {BookService} from './book.service';
 import {LoginService} from './login.service';
@@ -20,14 +21,14 @@ import {EventoService} from './evento.service';
 import {ReseñaService} from './reseñas.service';
 import {ComentarioService} from './comentario.service';
 import {PropuestaService} from './propuesta.service';
-
+import {MensajeService} from './mensaje.service';
 
 import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   selector: 'app',
   templateUrl: 'app/app.component.html',
-  providers:  [BookService, LoginService, EventoService, ReseñaService,ComentarioService,PropuestaService, HTTP_PROVIDERS],
+  providers:  [BookService, LoginService, EventoService, ReseñaService,ComentarioService,PropuestaService, MensajeService,HTTP_PROVIDERS],
   directives: [LoginComponent, ROUTER_DIRECTIVES, Alert]
 })
 @RouteConfig([
@@ -40,7 +41,8 @@ import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
   {path: '/mensajes', name: 'Mensajes', component: MensajeComponent},
   {path: '/propuestas', name: 'Propuestas', component: PropuestasListComponent},
   {path: '/propuestas/nueva', name: 'NuevaPropuesta', component: PropuestaFormComponent},
-  {path: '/propuestas/detalle/:id', name: 'DetallePropuesta', component: PropuestaDetailComponent}
+  {path: '/propuestas/detalle/:id', name: 'DetallePropuesta', component: PropuestaDetailComponent},
+  {path: '/mensajes/detalle/:id', name: 'DetalleMensaje', component: MensajeDetailComponent}
 ])
 export class AppComponent {	
 	constructor(private loginService: LoginService, private router:Router){}
