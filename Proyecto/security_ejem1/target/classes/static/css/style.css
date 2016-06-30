@@ -581,7 +581,7 @@ li {
   }
 }
 .brand .ts-profile-nav {
-  float: right;
+  float: left;
   display: none;
 }
 .brand .ts-profile-nav li {
