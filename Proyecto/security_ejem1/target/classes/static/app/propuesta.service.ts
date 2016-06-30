@@ -9,6 +9,7 @@ export interface Propuesta {
 	resumen:string;
 	descripcion:string;
 	direccion:string;
+	ciudad:string
 	organizador:string;
 	tipo:string;
 	fecha:string;

@@ -9,6 +9,7 @@ export interface Evento {
     resumen:string;
 	descripcion:string;
 	direccion:string;
+	ciudad:string;
 	patrocinador:string;
 	organizador:string;
 	tipo:string;

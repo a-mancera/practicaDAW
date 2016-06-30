@@ -34,6 +34,8 @@ public class Evento {
 	
 	private String direccion;
 	
+	private String ciudad;
+	
 	private String patrocinador;
 	
 	private String organizador;
@@ -50,12 +52,13 @@ public class Evento {
 	
 	public Evento() {}
 
-	public Evento(String nombre, String resumen, String descripcion,String direccion, String patrocinador, 
-			String organizador,String tipo, String fecha,String hora) {
+	public Evento(String nombre, String resumen, String descripcion,String direccion, String ciudad,
+			String patrocinador, String organizador,String tipo, String fecha,String hora) {
 		this.nombre = nombre;
 		this.resumen = resumen;
 		this.descripcion = descripcion;
 		this.direccion = direccion;
+		this.ciudad = ciudad;
 		this.patrocinador = patrocinador;
 		this.organizador = organizador;
 		this.tipo = tipo;
@@ -122,6 +125,9 @@ public class Evento {
 		return this.foto;
 	}
 	
+	public String getCiudad(){
+		return this.ciudad;
+	}
 	/*public List<Reseña> getReseñas(){
 		return this.reseñas;		
 	}*/

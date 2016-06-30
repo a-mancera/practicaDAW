@@ -34,6 +34,8 @@ public class PropuestaEvento {
 	
 	private String direccion;
 	
+	private String ciudad;
+	
 	private String organizador;
 	
 	private String tipo;
@@ -46,12 +48,13 @@ public class PropuestaEvento {
 	
 	public PropuestaEvento() {}
 
-	public PropuestaEvento(String nombre, String resumen, String descripcion,String direccion,  
+	public PropuestaEvento(String nombre, String resumen, String descripcion,String direccion, String ciudad, 
 			String organizador,String tipo, String fecha,String hora, double estimacionPatrocinio) {
 		this.nombre = nombre;
 		this.resumen = resumen;
 		this.descripcion = descripcion;
 		this.direccion = direccion;
+		this.ciudad = ciudad;
 		this.organizador = organizador;
 		this.tipo = tipo;
 		this.fecha = fecha;
@@ -97,6 +100,10 @@ public class PropuestaEvento {
 	
 	public double getEstimacionPatrocinio(){
 		return this.estimacionPatrocinio;
+	}
+	
+	public String getCiudad(){
+		return this.ciudad;
 	}
 	
 	/*public List<Reseña> getReseñas(){

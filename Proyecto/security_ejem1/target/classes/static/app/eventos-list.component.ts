@@ -13,7 +13,7 @@ import {LoginService}   from './login.service';
     	<a [routerLink]="['EventoDetallado', {id:evento.id}]">Nombre: {{evento.nombre}}</a>
     	<ul>
     	<li>Resumen:{{evento.resumen}}</li>
-    	<li>Direccion:{{evento.direccion}}</li>
+    	<li>Direccion:{{evento.direccion}},{{evento.ciudad}}</li>
     	<li>Tipo evento:{{evento.tipo}}</li>
     	</ul>          
       </li>

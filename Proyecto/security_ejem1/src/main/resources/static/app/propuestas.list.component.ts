@@ -29,7 +29,7 @@ export interface Mensaje {
     	<a [routerLink]="['DetallePropuesta', {id:i.id}]">Nombre: {{i.nombre}}</a>
     	<ul>
     	<li>Resumen:{{i.resumen}}</li>
-    	<li>Direccion:{{i.direccion}}</li>
+    	<li>Direccion:{{i.direccion}}, {{i.ciudad}}</li>
     	<li>Tipo evento:{{i.tipo}}</li>
     	</ul>          
       </li>

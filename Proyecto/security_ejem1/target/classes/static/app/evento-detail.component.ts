@@ -11,7 +11,7 @@ import {LoginService}   from './login.service';
   	<img src="/carteles/{{evento.foto}}.jpg" /><br>
   	<label>Nombre: {{evento.nombre}}</label><br>
   	<label>Resumen: {{evento.resumen}}</label><br>
-  	<label>Descripcion: {{evento.descripcion}}</label><br>
+  	<label>Descripcion: {{evento.descripcion}},{{evento.direccion}}</label><br>
 	<label>Fecha: {{evento.fecha}}</label><br>
 	<label>Hora: {{evento.hora}}</label><br>
 	<label>Direccion: {{evento.direccion}}</label><br>

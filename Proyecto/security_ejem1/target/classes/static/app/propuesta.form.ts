@@ -14,8 +14,12 @@ import {PropuestaService, Propuesta} from './propuesta.service';
     <textarea [(ngModel)]="propuesta.descripcion" placeholder="Descripcion" rows="8" cols="50"></textarea><br>
 	<label>Direccion: </label>
     <input [(ngModel)]="propuesta.direccion" placeholder="Direccion"/><br>
-	<label>Tipo: </label>
-    <input [(ngModel)]="propuesta.tipo" placeholder="Nombre del evento"/><br>
+    <label>Ciudad: </label>
+    <input [(ngModel)]="propuesta.ciudad" placeholder="Direccion"/><br>
+	<label>Tipo: </label><br>
+    <span *ngFor="#t of service.user.tiposEventos">
+	<input name="tipo" type="radio" (click)="tipoSeleccionado(t)"/>{{t}}<br>
+	</span><br>
 	<label>Fecha: </label>
     <input [(ngModel)]="propuesta.fecha" placeholder="Fecha"/><br>
 	<label>Hora: </label>
@@ -23,12 +27,14 @@ import {PropuestaService, Propuesta} from './propuesta.service';
 	<label>Estimacion coste patrocinio: </label>
     <input [(ngModel)]="propuesta.estimacionPatrocinio" placeholder="Estimacion coste"/><br>
 	<p>{{hola}}</p>
+	
   <button (click)="crear()">Crear propuesta</button>
   <button (click)="volver()">Volver</button>
    `
 })
 export class PropuestaFormComponent {
   propuesta:Propuesta;
+  tipoSel:string;
   hola = 'bien';
   constructor(
     private router:Router,
@@ -49,10 +55,15 @@ export class PropuestaFormComponent {
     }
     
     crear(){
+    	this.propuesta.tipo = this.tipoSel;
     	this.propService.crear(this.propuesta).subscribe(
             propuesta => {},
             error => this.hola = error
         	);
     	this.router.navigate(['Propuestas']);
+    }
+    
+    tipoSeleccionado(tip:string){
+    	this.tipoSel = tip;
     }
 }

@@ -3,6 +3,7 @@ import {ROUTER_DIRECTIVES, RouteParams, Router} from 'angular2/router';
 import {Propuesta,PropuestaService}   from './propuesta.service';
 import {Evento, EventoService}   from './evento.service';
 import {LoginService}   from './login.service';
+import {Mensaje, MensajeService}   from './mensaje.service';
 
 import {HTTP_PROVIDERS, Http} from 'angular2/http';
 import {MultipartItem} from "./multipart-upload/multipart-item";
@@ -18,17 +19,31 @@ import {MultipartUploader} from "./multipart-upload/multipart-uploader";
   	<label>Organizador: {{propuesta.organizador}}</label><br>
 	<label>Fecha: {{propuesta.fecha}}</label><br>
 	<label>Hora: {{propuesta.hora}}</label><br>
-	<label>Direccion: {{propuesta.direccion}}</label><br>
+	<label>Direccion: {{propuesta.direccion}}, {{propuesta.ciudad}}</label><br>
 	<label>Tipo evento: {{propuesta.tipo}}</label><br>
 	<label>Coste estimado: {{propuesta.estimacionPatrocinio}}</label><br>
-	 <button (click)="volver()">Contactar con organizador</button>
+	 <button (click)="contactarForm()">Contactar con organizador</button>
+	 
+	 <div *ngIf="contactar">
+	 <label>Asunto: </label>
+	<input [(ngModel)]="nuevoMensaje.asunto" placeholder="Asunto"/><br>
+	<label>Mensaje:</label><br>
+	<textarea [(ngModel)]="nuevoMensaje.mensaje" placeholder="Descripcion" rows="8" cols="50"></textarea><br>
+	<button (click)="enviarMensaje()">Enviar</button>
+	
+	 </div>
+	 
+	 <p>{{hola}}</p>
+	 
+	 <p *ngIf="mensajeEnviado">Mensaje enviado</p> 
+	 
 	    <button (click)="crearEvento=true">Crear evento</button>	   	    
   	    <button (click)="volver()">Volver</button>
   	 <hr>
 	<div *ngIf="crearEvento">
 		<label>Código del evento:</label>
 		<input [(ngModel)]="cod" placeholder="Nombre del evento"/><br>
-		<label for="exampleInputFile">File input</label> <input type="file" (change)="selectFile($event)">				
+		<label for="exampleInputFile">Cargar cartel: </label> <input type="file" (change)="selectFile($event)">				
 		<button (click)="crear()">Confirmar</button>
 	</div>
 	<p *ngIf="correcto">{{hola}} {{evento.nombre}}</p>
@@ -41,23 +56,28 @@ export class PropuestaDetailComponent implements OnInit {
 	cod:number;
 	correcto:true;
 	evento:Evento;
-    
+    contactar: false;
     private file: File;
 	mensaje = 'hola';
 	private images: String[] = [];
     foto = false;
+    nuevoMensaje:Mensaje;
+    mensajeEnviado:false;
+    
     constructor(private router:Router, 
     routeParams: RouteParams,
     private service:PropuestaService,private lService:LoginService,
-    private evService:EventoService,private http: Http) {
+    private evService:EventoService,private http: Http,private mService:MensajeService) {
     	 let id = routeParams.get('id');
     	 this.propuesta = { nombre:''};
+    	  
     	 service.getPropuesta(id).subscribe(
             propuesta => this.propuesta= propuesta,
             error => this.hola = error//console.error(error)
         	);
         	this.evento = { nombre:''};
         	this.hola = 'fin';
+        	this.nuevoMensaje = { remitente:this.propuesta.organizador,emisor:lService.user.name};
     }
 
 	volver(){
@@ -71,6 +91,7 @@ export class PropuestaDetailComponent implements OnInit {
 			this.evento.resumen = this.propuesta.resumen;
 			this.evento.descripcion = this.propuesta.descripcion;
 			this.evento.direccion = this.propuesta.direccion;
+			this.evento.ciudad = this.propuesta.ciudad;
 			this.evento.patrocinador = this.lService.user.name;
 			this.evento.organizador = this.propuesta.organizador;
 			this.evento.tipo = this.propuesta.tipo;
@@ -132,4 +153,18 @@ export class PropuestaDetailComponent implements OnInit {
 		multipartItem.upload();
 	}
 	
+	contactarForm(){
+		this.contactar = true;
+		
+	}
+	
+	enviarMensaje(){
+		this.nuevoMensaje.remitente = this.propuesta.organizador;
+		this.mService.guardarMensaje(this.nuevoMensaje).subscribe(
+	    _ => {},
+	    error => this.hola = error
+	    );
+	    this.mensajeEnviado=true;
+	    this.contactar = false;
+	}
 }
