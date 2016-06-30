@@ -1,14 +1,19 @@
 package es.urjc.code.daw.library.book;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
 import es.urjc.code.daw.library.TipoEvento;
+import es.urjc.code.daw.library.eventos.Evento;
+import es.urjc.code.daw.library.eventos.EventoRepository;
 import es.urjc.code.daw.library.user.User;
 import es.urjc.code.daw.library.user.UserRepository;
+
 
 @Controller
 public class DatabaseInitializer implements CommandLineRunner {
@@ -19,6 +24,10 @@ public class DatabaseInitializer implements CommandLineRunner {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private EventoRepository eventoRepository;
+	
+	
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -36,13 +45,25 @@ public class DatabaseInitializer implements CommandLineRunner {
 				"En el año 53 a. C. el cónsul Craso cruzó el Éufrates para conquistar Oriente, pero su ejército fue destrozado en Carrhae. Una legión entera cayó prisionera de los partos. Nadie sabe a ciencia cierta qué pasó con aquella legión perdida.150 años después, Trajano está a punto de volver a cruzar el Éufrates. ..."));
 
 		// Sample users
-
+		
+		Evento even = new Evento("Evento de prueba1","resumen", "Esto es un evento de prueba para probar",
+			"Puerta del Sol, Madrid", "Patrocinador1","Organizador1","Reality Experience", "26/06/2016","22:00");
+		eventoRepository.save(even);
+		
 		userRepository.save(new User("user", "pass", "ROLE_USER"));
 		userRepository.save(new User("admin", "pass", "ROLE_USER", "ROLE_ADMIN"));
 		ArrayList<String> tipos = new ArrayList<String>();
-		tipos.add("Experiencia");
-		userRepository.save(new User("prueba","prueba","Ooeoe","www.google.es",
+		tipos.add("Reality Experience");
+		ArrayList<Evento> eventos = new ArrayList<Evento>();
+		eventos.add(even);
+		userRepository.save(new User("Patrocinador1","1234","Ooeoe","www.google.es",
 				tipos,"","","","","Usuario pruieba",true,"ROLE_USER", "ROLE_ADMIN"));
+		userRepository.save(new User("Organizador1","1234","Ooeoe","www.google.es",
+				tipos,"","","","","Usuario pruieba",false,"ROLE_USER", "ROLE_ADMIN"));
+		/*userRepository.save(new User("Patrocinador1","1234","Ooeoe","www.google.es",
+				tipos,"","","","","Usuario pruieba",true,"ROLE_USER", "ROLE_ADMIN"));
+		userRepository.save(new User("Organizador1","1234","Ooeoe","www.google.es",
+				tipos,"","","","","Usuario pruieba",false,"ROLE_USER", "ROLE_ADMIN"));*/
 	}
 
 }

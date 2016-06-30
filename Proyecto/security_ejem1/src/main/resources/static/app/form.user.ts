@@ -65,7 +65,7 @@ export class UserFormComponent {
     }
     
     volver(){
-    	this.router.navigate(['Books']);
+    	this.router.navigate(['Eventos']);
     }
     
     crear(){
@@ -81,6 +81,6 @@ export class UserFormComponent {
     	book => {}, 
     	error => this.name = 'error'
     	);
-    	this.router.navigate(['Books']);
+    	this.router.navigate(['Eventos']);
     }
 }
