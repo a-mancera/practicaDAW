@@ -20,6 +20,7 @@ export interface Mensaje {
     	<li>Resumen:{{i.resumen}}</li>
     	<li>Direccion:{{i.direccion}}</li>
     	<li>Tipo evento:{{i.tipo}}</li>
+    	<li *ngIf="i.organizador==service.user.name">Identificador para la creación del evento: {{i.id}}</li>
     	</ul>          
       </li>
       </ul>
