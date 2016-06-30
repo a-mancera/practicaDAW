@@ -111,4 +111,3 @@ Ilustración 1. Página inicial<br>
 <br><a href="https://github.com/a-mancera/practicaDAW/blob/master/capturas/20.png?raw=true" target="_blank"><img src="https://github.com/a-mancera/practicaDAW/blob/master/capturas/20.png?raw=true" style="max-width:100%;"></a>
 <br>
 
-<video><source src="videoo.mp4" type="video/mp4" /></video>
