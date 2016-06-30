@@ -33,11 +33,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<User> getUsuario(@PathVariable long id) {
+	public ResponseEntity<User> getUsuario(@PathVariable String id) {
 		
 		
 
-		User anuncio = repository.findOne(id);
+		User anuncio = repository.findByName(id);
 		if (anuncio != null) {
 			return new ResponseEntity<>(anuncio, HttpStatus.OK);
 		} else {

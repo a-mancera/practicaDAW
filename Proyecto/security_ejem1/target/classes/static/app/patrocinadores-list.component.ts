@@ -7,18 +7,18 @@ import {LoginService, User}   from './login.service';
 @Component({
     directives: [ROUTER_DIRECTIVES],
     template: `
-    <h2>Organizadores:</h2>
+    <h2>Patrocinadores:</h2>
     <ul *ngFor="#u of usuarios">
-      <li *ngIf="!u.patrocinador">
-      <a [routerLink]="['OrganizadorDetalle', {id:u.name}]">Nombre de usuario: {{u.name}}</a>
+      <li *ngIf="u.patrocinador">
+      <a [routerLink]="['PatrocinadorDetalle', {id:u.name}]">Nombre de usuario: {{u.name}}</a>
       </li>    	
-    	<li *ngIf="!u.patrocinador">Nombre:{{u.nombre}}</li>
-    	<li *ngIf="!u.patrocinador">Descripcion:{{u.descripcion}}</li>     	   	                  
+    	<li *ngIf="u.patrocinador">Nombre:{{u.nombre}}</li>
+    	<li *ngIf="u.patrocinador">Descripcion:{{u.descripcion}}</li>     	   	                  
     </ul>
     <button (click)="volver()">Volver</button>
   `
 })
-export class OrganizadoresListComponent implements OnInit {
+export class PatrocinadoresListComponent implements OnInit {
 
     usuarios: User[];
 	hola = 'bien';

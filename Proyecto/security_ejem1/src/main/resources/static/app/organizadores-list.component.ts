@@ -10,7 +10,7 @@ import {LoginService, User}   from './login.service';
     <h2>Organizadores:</h2>
     <ul *ngFor="#u of usuarios">
       <li *ngIf="!u.patrocinador">
-      <a [routerLink]="['OrganizadorDetalle', {id:u.id}]">Nombre de usuario: {{u.name}}</a>
+      <a [routerLink]="['OrganizadorDetalle', {id:u.name}]">Nombre de usuario: {{u.name}}</a>
       </li>    	
     	<li *ngIf="!u.patrocinador">Nombre:{{u.nombre}}</li>
     	<li *ngIf="!u.patrocinador">Descripcion:{{u.descripcion}}</li>     	   	                  
