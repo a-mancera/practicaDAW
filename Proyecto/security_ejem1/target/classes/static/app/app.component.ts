@@ -13,13 +13,16 @@ import {UserFormComponent} from './form.user';
 import {BookService} from './book.service';
 import {LoginService} from './login.service';
 import {EventoService} from './evento.service';
+import {ReseñaService} from './reseñas.service';
+import {ComentarioService} from './comentario.service';
+
 
 import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   selector: 'app',
   templateUrl: 'app/app.component.html',
-  providers:  [BookService, LoginService, EventoService, HTTP_PROVIDERS],
+  providers:  [BookService, LoginService, EventoService, ReseñaService,ComentarioService, HTTP_PROVIDERS],
   directives: [LoginComponent, ROUTER_DIRECTIVES, Alert]
 })
 @RouteConfig([

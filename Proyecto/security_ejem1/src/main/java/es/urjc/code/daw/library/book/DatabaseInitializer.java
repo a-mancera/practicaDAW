@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import es.urjc.code.daw.library.TipoEvento;
 import es.urjc.code.daw.library.eventos.Evento;
 import es.urjc.code.daw.library.eventos.EventoRepository;
+import es.urjc.code.daw.library.reseña.Comentario;
+import es.urjc.code.daw.library.reseña.ComentarioRepository;
 import es.urjc.code.daw.library.user.User;
 import es.urjc.code.daw.library.user.UserRepository;
 
@@ -27,7 +29,8 @@ public class DatabaseInitializer implements CommandLineRunner {
 	@Autowired
 	private EventoRepository eventoRepository;
 	
-	
+	@Autowired
+	private ComentarioRepository reseñaRepository;	
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -45,9 +48,13 @@ public class DatabaseInitializer implements CommandLineRunner {
 				"En el año 53 a. C. el cónsul Craso cruzó el Éufrates para conquistar Oriente, pero su ejército fue destrozado en Carrhae. Una legión entera cayó prisionera de los partos. Nadie sabe a ciencia cierta qué pasó con aquella legión perdida.150 años después, Trajano está a punto de volver a cruzar el Éufrates. ..."));
 
 		// Sample users
-		
+		Comentario reseña = new Comentario(1,"Muy buen evento, volveré a repetir",5,"Anonimo");
+		reseñaRepository.save(reseña);
+		ArrayList<Comentario> reseñas = new ArrayList<>();
+		reseñas.add(reseña);
 		Evento even = new Evento("Evento de prueba1","resumen", "Esto es un evento de prueba para probar",
 			"Puerta del Sol, Madrid", "Patrocinador1","Organizador1","Reality Experience", "26/06/2016","22:00");
+		
 		eventoRepository.save(even);
 		
 		userRepository.save(new User("user", "pass", "ROLE_USER"));

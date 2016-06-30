@@ -1,17 +1,22 @@
 package es.urjc.code.daw.library.eventos;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import es.urjc.code.daw.library.reseña.Comentario;
 import es.urjc.code.daw.library.user.User;
 import es.urjc.code.daw.library.user.UserRepository;
 
@@ -39,6 +44,9 @@ public class Evento {
 	
 	private String hora;
 	
+	//@OneToMany(cascade=CascadeType.ALL)
+	//private List<Reseña> reseñas = new ArrayList<>();
+	
 	public Evento() {}
 
 	public Evento(String nombre, String resumen, String descripcion,String direccion, String patrocinador, 
@@ -53,6 +61,20 @@ public class Evento {
 		this.fecha = fecha;
 		this.hora = hora;
 	}
+	
+	/*public Evento(String nombre, String resumen, String descripcion,String direccion, String patrocinador, 
+			String organizador,String tipo, String fecha,String hora, List<Reseña> reseñas) {
+		this.nombre = nombre;
+		this.resumen = resumen;
+		this.descripcion = descripcion;
+		this.direccion = direccion;
+		this.patrocinador = patrocinador;
+		this.organizador = organizador;
+		this.tipo = tipo;
+		this.fecha = fecha;
+		this.hora = hora;
+		this.reseñas = reseñas;
+	}*/
 	
 	public long getId(){
 		return this.id;
@@ -93,4 +115,8 @@ public class Evento {
 	public String getHora(){
 		return this.hora;
 	}
+	
+	/*public List<Reseña> getReseñas(){
+		return this.reseñas;		
+	}*/
 }
