@@ -35,6 +35,19 @@ export class EventoService {
 	      .catch(error => this.handleError(error));
   }
   
+  crear(evento:Evento){
+  	let body = JSON.stringify(evento);
+	    let headers = new Headers({
+	        'Content-Type': 'application/json',
+	        'X-Requested-With': 'XMLHttpRequest'
+	    });
+	    let options = new RequestOptions({ headers });
+	
+	    return this.http.post(URL, body, options)
+	      .map(response => response.json())
+	      .catch(error => this.handleError(error));
+  }
+  
     private handleError(error: any){
       console.error(error);
       return Observable.throw("Server error (" + error.status + "): " + error.text())

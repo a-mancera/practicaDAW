@@ -63,7 +63,7 @@ export class MensajeService {
       .catch(error => this.handleError(error));
   }
   
-   eliminarMensaje(mensaje: mensaje) {
+   eliminarMensaje(mensaje: Mensaje) {
     return this.http.delete(URL+ mensaje.id)
       .map(response => undefined)
       .catch(error => this.handleError(error));

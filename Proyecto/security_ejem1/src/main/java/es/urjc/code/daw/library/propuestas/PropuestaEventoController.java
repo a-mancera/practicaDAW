@@ -49,6 +49,18 @@ public class PropuestaEventoController {
 
 		return anuncio;
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<PropuestaEvento> borraAnuncio(@PathVariable long id) {
+
+		if (repository.exists(id)) {
+			repository.delete(id);
+			return new ResponseEntity<>(null, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
 	/*
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Book> actulizaAnuncio(@PathVariable long id, @RequestBody Book updatedBook) {
@@ -65,15 +77,6 @@ public class PropuestaEventoController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Book> borraAnuncio(@PathVariable long id) {
-
-		if (repository.exists(id)) {
-			repository.delete(id);
-			return new ResponseEntity<>(null, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}*/
+	*/
 
 }

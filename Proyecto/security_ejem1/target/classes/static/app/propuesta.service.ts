@@ -47,7 +47,11 @@ export class PropuestaService {
 	      .catch(error => this.handleError(error));
   }
   
-  crearPropuesta(propuesta:Propuesta){}
+  eliminar(propuesta:Propuesta) {
+    return this.http.delete(URL+ propuesta.id)
+      .map(response => undefined)
+      .catch(error => this.handleError(error));
+  }
   
     private handleError(error: any){
       console.error(error);

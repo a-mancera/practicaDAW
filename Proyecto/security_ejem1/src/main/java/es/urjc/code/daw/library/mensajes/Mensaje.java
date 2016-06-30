@@ -72,4 +72,9 @@ public class Mensaje {
 	public String getFecha(){				
 		return fecha;
 	}
+	
+	public void setFecha(){
+		DateFormat formatoDias = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		this.fecha = formatoDias.format(new Date());
+	}
 }

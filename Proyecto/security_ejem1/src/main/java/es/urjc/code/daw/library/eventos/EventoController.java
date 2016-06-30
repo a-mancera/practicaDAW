@@ -39,16 +39,16 @@ public class EventoController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-/*
+
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Book nuevoAnuncio(@RequestBody Book anuncio) {
+	public Evento nuevoAnuncio(@RequestBody Evento evento) {
 
-		repository.save(anuncio);
+		repository.save(evento);
 
-		return anuncio;
+		return evento;
 	}
-
+	/*
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Book> actulizaAnuncio(@PathVariable long id, @RequestBody Book updatedBook) {
 

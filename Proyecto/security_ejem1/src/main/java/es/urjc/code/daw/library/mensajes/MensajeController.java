@@ -55,7 +55,7 @@ public class MensajeController {
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Mensaje nuevoAnuncio(@RequestBody Mensaje mensaje) {
-
+		mensaje.setFecha();
 		repository.save(mensaje);
 
 		return mensaje;
